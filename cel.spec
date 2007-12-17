@@ -10,7 +10,6 @@ Group:		System/Libraries
 License:	LGPL
 Source0:	%{name}-src-%{version}.tar.bz2
 Patch0:		cel-1.0-x86_64-fix.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.sourceforge.net/projects/cel/
 BuildRequires:	jam crystalspace-devel >= 1.0 python-devel cppunit-devel
 BuildRequires:	zlib-devel
