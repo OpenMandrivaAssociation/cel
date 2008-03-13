@@ -3,17 +3,23 @@
 %define	release	%mkrel 1
 
 Summary:	Crystal Entity Layer
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		cel
+Version:	1.2
+Release:	%mkrel 1
 Group:		System/Libraries
-License:	LGPL
-Source0:	%{name}-src-%{version}.tar.bz2
-Patch0:		cel-1.0-x86_64-fix.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-URL:		http://www.sourceforge.net/projects/cel/
-BuildRequires:	jam crystalspace-devel >= 1.0 python-devel cppunit-devel
+License:	LGPLv2+
+URL:		http://www.crystalspace3d.org/
+Source0:	http://www.crystalspace3d.org/downloads/release/%{name}-src-%{version}.tar.bz2
+BuildRequires:	ftjam
+BuildRequires:	crystalspace-devel >= 1.0
+BuildRequires:	python-devel
+BuildRequires:	cppunit-devel
 BuildRequires:	zlib-devel
+BuildRequires:	libtool
+BuildRequires:	texinfo
+BuildRequires:	doxygen
+BuildRequires:	imagemagick
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Crystal Entity Layer (CEL) is a game entity layer based on Crystal Space.
@@ -30,12 +36,15 @@ Development headers and libraries for %{name}
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch0 -p1 -b .x86_64
 
 %build
 ./autogen.sh
+
 perl -pi -e "s#cspycommon##g" configure
-%configure	--disable-separate-debug-info
+
+%configure2_5x \
+	--disable-separate-debug-info
+
 jam %{_smp_mflags}
 
 %install
@@ -68,5 +77,3 @@ rm -rf %{buildroot}
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/*
 %{_libdir}/*.a
-
-
