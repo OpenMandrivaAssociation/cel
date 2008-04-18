@@ -1,7 +1,3 @@
-%define	name	cel
-%define	version	1.0
-%define	release	%mkrel 1
-
 Summary:	Crystal Entity Layer
 Name:		cel
 Version:	1.2
@@ -26,12 +22,12 @@ Crystal Entity Layer (CEL) is a game entity layer based on Crystal Space.
 It makes it easier for game developers to create games based on Crystal Space.
 CEL can optionally be used together with Python or other scripting languages.
 
-%package	devel
+%package devel
 Group:		Development/C
 Summary:	Development headers and libraries for %{name}
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
-%description	devel
+%description devel
 Development headers and libraries for %{name}
 
 %prep
