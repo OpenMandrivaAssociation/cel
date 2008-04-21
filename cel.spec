@@ -15,6 +15,11 @@ BuildRequires:	libtool
 BuildRequires:	texinfo
 BuildRequires:	doxygen
 BuildRequires:	imagemagick
+BuildRequires:	perl(Template::Base)
+BuildRequires:	tetex-dvips
+BuildRequires:	tetex-dvipdfm
+BuildRequires:	icoutils
+BuildRequires:	librsvg
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -39,7 +44,8 @@ Development headers and libraries for %{name}
 perl -pi -e "s#cspycommon##g" configure
 
 %configure2_5x \
-	--disable-separate-debug-info
+	--disable-separate-debug-info \
+	--disable-meta-info-embedding
 
 jam %{_smp_mflags}
 
