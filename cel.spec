@@ -7,7 +7,7 @@ License:	LGPLv2+
 URL:		http://www.crystalspace3d.org/
 Source0:	http://www.crystalspace3d.org/downloads/release/%{name}-src-%{version}.tar.bz2
 BuildRequires:	ftjam
-BuildRequires:	crystalspace-devel >= 1.0
+BuildRequires:	crystalspace-devel >= 1.2
 BuildRequires:	python-devel
 BuildRequires:	cppunit-devel
 BuildRequires:	zlib-devel
@@ -28,12 +28,20 @@ It makes it easier for game developers to create games based on Crystal Space.
 CEL can optionally be used together with Python or other scripting languages.
 
 %package devel
-Group:		Development/C
 Summary:	Development headers and libraries for %{name}
+Group:		Development/C
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-Development headers and libraries for %{name}
+Development headers and libraries for %{name}.
+
+%package doc
+Summary:	Documentation for %{name}
+Group:		Development/C
+Requires:	%{name} = %{version}-%{release}
+
+%description doc
+Documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-src-%{version}
@@ -62,20 +70,25 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README docs/todo.txt docs/history.txt
 %{_bindir}/*
-%exclude %{_bindir}/cel.cex
+#%exclude %{_bindir}/cel.cex
 %exclude %{_bindir}/%{name}-config
-%{_datadir}/%{name}
-%dir %{_sysconfdir}/%{name}
-%config(noreplace) %{_sysconfdir}/%{name}/*.cfg
+%{_datadir}/%{name}-%{version}
+%dir %{_sysconfdir}/%{name}-%{version}
+%config(noreplace) %{_sysconfdir}/%{name}-%{version}/*.cfg
 %{_bindir}/%{name}tst
 %{_bindir}/bootstrap
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/*.so
+%dir %{_libdir}/%{name}-%{version}
+%{_libdir}/%{name}-%{version}/*.so
+%{_libdir}/%{name}-%{version}/*.csplugin
 
 %files devel
 %defattr(-,root,root)
-%{_bindir}/cel.cex
+#%{_bindir}/cel.cex
 %{_bindir}/%{name}-config
-%dir %{_includedir}/%{name}
-%{_includedir}/%{name}/*
+%dir %{_includedir}/%{name}-%{version}
+%{_includedir}/%{name}-%{version}/*
 %{_libdir}/*.a
+
+%files doc
+%defattr(-,root,root)
+%{_docdir}/%{name}-%{version}
