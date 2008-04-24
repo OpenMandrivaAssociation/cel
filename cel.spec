@@ -20,6 +20,7 @@ BuildRequires:	tetex-dvips
 BuildRequires:	tetex-dvipdfm
 BuildRequires:	icoutils
 BuildRequires:	librsvg
+BuildRequires:	crystalspace-bindings-python
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
