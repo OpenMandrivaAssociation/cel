@@ -71,23 +71,19 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README docs/todo.txt docs/history.txt
 %{_bindir}/*
-#%exclude %{_bindir}/cel.cex
 %exclude %{_bindir}/%{name}-config
-%{_datadir}/%{name}-%{version}
-%dir %{_sysconfdir}/%{name}-%{version}
-%config(noreplace) %{_sysconfdir}/%{name}-%{version}/*.cfg
-%{_bindir}/%{name}tst
-%{_bindir}/bootstrap
-%dir %{_libdir}/%{name}-%{version}
-%{_libdir}/%{name}-%{version}/*.so
-%{_libdir}/%{name}-%{version}/*.csplugin
+%{_datadir}/%{name}-1.2
+%dir %{_sysconfdir}/%{name}-1.2
+%config(noreplace) %{_sysconfdir}/%{name}-1.2/*.cfg
+%dir %{_libdir}/%{name}-1.2
+%{_libdir}/%{name}-1.2/*.so
+%{_libdir}/%{name}-1.2/*.csplugin
 
 %files devel
 %defattr(-,root,root)
-#%{_bindir}/cel.cex
 %{_bindir}/%{name}-config
-%dir %{_includedir}/%{name}-%{version}
-%{_includedir}/%{name}-%{version}/*
+%dir %{_includedir}/%{name}-1.2
+%{_includedir}/%{name}-1.2/*
 %{_libdir}/*.a
 
 %files doc
