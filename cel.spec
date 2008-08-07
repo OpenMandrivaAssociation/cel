@@ -1,7 +1,7 @@
 Summary:	Crystal Entity Layer
 Name:		cel
 Version:	1.2.1
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		System/Libraries
 License:	LGPLv2+
 URL:		http://www.crystalspace3d.org/
