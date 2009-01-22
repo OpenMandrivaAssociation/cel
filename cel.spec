@@ -1,11 +1,12 @@
 Summary:	Crystal Entity Layer
 Name:		cel
 Version:	1.2.1
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		System/Libraries
 License:	LGPLv2+
 URL:		http://www.crystalspace3d.org/
 Source0:	http://www.crystalspace3d.org/downloads/release/%{name}-src-%{version}.tar.bz2
+Patch0:		cel-1.2.1-fix-str-fmt.patch
 BuildRequires:	ftjam
 BuildRequires:	crystalspace-devel >= 1.2
 BuildRequires:	python-devel
@@ -46,6 +47,7 @@ Documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-src-%{version}
+%patch0 -p0
 
 %build
 ./autogen.sh
