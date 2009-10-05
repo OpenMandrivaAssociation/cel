@@ -7,6 +7,7 @@ License:	LGPLv2+
 URL:		http://www.crystalspace3d.org/
 Source0:	http://www.crystalspace3d.org/downloads/release/%{name}-src-%{version}.tar.bz2
 Patch0:		cel-1.2.1-fix-str-fmt.patch
+Patch1:		cel-1.2.1-glibc210.patch
 BuildRequires:	ftjam
 BuildRequires:	crystalspace-devel >= 1.2
 BuildRequires:	python-devel
@@ -48,9 +49,10 @@ Documentation for %{name}.
 %prep
 %setup -q -n %{name}-src-%{version}
 %patch0 -p0
+%patch1 -p0
 
 %build
-./autogen.sh
+#./autogen.sh
 
 perl -pi -e "s#cspycommon##g" configure
 
