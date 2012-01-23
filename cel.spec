@@ -7,7 +7,7 @@ Group:		System/Libraries
 License:	LGPLv2+
 URL:		http://www.crystalspace3d.org/
 Source0:	http://www.crystalspace3d.org/downloads/release/%{name}-src-%{version}.tar.bz2
-Patch0:		cel-1.2.1-fix-str-fmt.patch
+Patch0:		cel-1.4.1-fix-str-fmt.patch
 BuildRequires:	ftjam >= 2.5.3rc2-0.9
 BuildRequires:	crystalspace-devel >= %{major}
 BuildRequires:	python-devel
@@ -47,7 +47,7 @@ Documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch0 -p0
+%patch0 -p1 -b .str_fmt~
 
 %build
 CXXFLAGS="%{optflags} -fpermissive" \
