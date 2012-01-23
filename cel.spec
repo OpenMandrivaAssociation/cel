@@ -32,7 +32,7 @@ CEL can optionally be used together with Python or other scripting languages.
 %package	devel
 Summary:	Development headers and libraries for %{name}
 Group:		Development/C
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{EVRD}
 
 %description	devel
 Development headers and libraries for %{name}.
@@ -40,7 +40,7 @@ Development headers and libraries for %{name}.
 %package	doc
 Summary:	Documentation for %{name}
 Group:		Development/C
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{EVRD}
 
 %description	doc
 Documentation for %{name}.
