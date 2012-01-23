@@ -8,7 +8,7 @@ License:	LGPLv2+
 URL:		http://www.crystalspace3d.org/
 Source0:	http://www.crystalspace3d.org/downloads/release/%{name}-src-%{version}.tar.bz2
 Patch0:		cel-1.2.1-fix-str-fmt.patch
-BuildRequires:	ftjam
+BuildRequires:	ftjam >= 2.5.3rc2-0.9
 BuildRequires:	crystalspace-devel >= %{major}
 BuildRequires:	python-devel
 BuildRequires:	pkgconfig(cppunit)
