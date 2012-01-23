@@ -11,8 +11,8 @@ Patch0:		cel-1.2.1-fix-str-fmt.patch
 BuildRequires:	ftjam
 BuildRequires:	crystalspace-devel >= %{major}
 BuildRequires:	python-devel
-BuildRequires:	cppunit-devel
-BuildRequires:	zlib-devel
+BuildRequires:	pkgconfig(cppunit)
+BuildRequires:	pkgconfig(zlib)
 BuildRequires:	libtool
 BuildRequires:	texinfo
 BuildRequires:	doxygen
@@ -21,7 +21,7 @@ BuildRequires:	perl(Template::Base)
 BuildRequires:	tetex-dvips
 BuildRequires:	tetex-dvipdfm
 BuildRequires:	icoutils
-BuildRequires:	librsvg
+BuildRequires:	pkgconfig(librsvg-2.0)
 BuildRequires:	crystalspace-bindings-python
 
 %description
