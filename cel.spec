@@ -23,27 +23,26 @@ BuildRequires:	tetex-dvipdfm
 BuildRequires:	icoutils
 BuildRequires:	librsvg
 BuildRequires:	crystalspace-bindings-python
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Crystal Entity Layer (CEL) is a game entity layer based on Crystal Space.
 It makes it easier for game developers to create games based on Crystal Space.
 CEL can optionally be used together with Python or other scripting languages.
 
-%package devel
+%package	devel
 Summary:	Development headers and libraries for %{name}
 Group:		Development/C
 Requires:	%{name} = %{version}-%{release}
 
-%description devel
+%description	devel
 Development headers and libraries for %{name}.
 
-%package doc
+%package	doc
 Summary:	Documentation for %{name}
 Group:		Development/C
 Requires:	%{name} = %{version}-%{release}
 
-%description doc
+%description	doc
 Documentation for %{name}.
 
 %prep
@@ -51,10 +50,6 @@ Documentation for %{name}.
 %patch0 -p0
 
 %build
-#./autogen.sh
-
-perl -pi -e "s#cspycommon##g" configure
-
 CXXFLAGS="%{optflags} -fpermissive" \
 %configure2_5x \
 	--disable-separate-debug-info \
@@ -63,14 +58,9 @@ CXXFLAGS="%{optflags} -fpermissive" \
 jam -d2 %{_smp_mflags}
 
 %install
-rm -rf %{buildroot}
 DESTDIR=%{buildroot} jam -d2 install
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc README docs/todo.txt docs/history.txt
 %{_bindir}/*
 %exclude %{_bindir}/%{name}-config
@@ -84,11 +74,9 @@ rm -rf %{buildroot}
 %{python_sitearch}/blcelc.pth
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/%{name}-config
 %dir %{_includedir}/%{name}-%{major}
 %{_includedir}/%{name}-%{major}/*
 
 %files doc
-%defattr(-,root,root)
 %{_docdir}/%{name}-%{version}
