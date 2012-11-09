@@ -1,0 +1,32 @@
+--- cel-src-1.4.1/plugins/behaviourlayer/python/blcel.cpp.str_fmt~	2011-12-16 18:24:52.000000000 +0100
++++ cel-src-1.4.1/plugins/behaviourlayer/python/blcel.cpp	2012-01-23 21:53:21.140618683 +0100
+@@ -897,7 +897,7 @@ SWIG_Python_AddErrorMsg(const char* mesg
+     Py_DECREF(old_str);
+     Py_DECREF(value);
+   } else {
+-    PyErr_Format(PyExc_RuntimeError, mesg);
++    PyErr_Format(PyExc_RuntimeError, "%s",mesg);
+   }
+ }
+ 
+--- cel-src-1.4.1/plugins/propclass/mechanics/common.h.str_fmt~	2011-12-16 18:24:50.000000000 +0100
++++ cel-src-1.4.1/plugins/propclass/mechanics/common.h	2012-01-23 21:53:21.093618614 +0100
+@@ -22,6 +22,6 @@
+ 
+ #include "ivaria/reporter.h"
+ 
+-#define CS_REPORT(severity,message) csReport (object_reg, CS_REPORTER_SEVERITY_##severity, "cel.propclass.mechanics", message);
++#define CS_REPORT(severity,message) csReport (object_reg, CS_REPORTER_SEVERITY_##severity, "cel.propclass.mechanics", "%s", message);
+ 
+ #endif //__MECHANICS_COMMON_H__
+--- cel-src-1.4.1/plugins/behaviourlayer/python/swigpyruntime.h~	2011-12-16 18:24:51.000000000 +0100
++++ cel-src-1.4.1/plugins/behaviourlayer/python/swigpyruntime.h	2012-01-23 21:53:53.154665138 +0100
+@@ -862,7 +862,7 @@ SWIG_Python_AddErrorMsg(const char* mesg
+     Py_DECREF(old_str);
+     Py_DECREF(value);
+   } else {
+-    PyErr_Format(PyExc_RuntimeError, mesg);
++    PyErr_Format(PyExc_RuntimeError, "%s", mesg);
+   }
+ }
+ 
