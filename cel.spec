@@ -1,12 +1,12 @@
 Summary:	Crystal Entity Layer
 Name:		cel
 %define	major	1.4
-Version:	%{major}.1
+Version:	2.0
 Release:	1
 Group:		System/Libraries
 License:	LGPLv2+
 URL:		http://www.crystalspace3d.org/
-Source0:	http://www.crystalspace3d.org/downloads/release/%{name}-src-%{version}.tar.bz2
+Source0:	http://www.crystalspace3d.org/downloads/release/cel-src-%{version}.tar.bz2
 Patch0:		cel-1.4.1-fix-str-fmt.patch
 BuildRequires:	ftjam >= 2.5.3rc2-0.9
 BuildRequires:	crystalspace-devel >= %{major}
@@ -157,4 +157,5 @@ DESTDIR=%{buildroot} jam -d2 install
 - new cvs snapshot
 - fix buildrequires
 - drop P0
+
 
