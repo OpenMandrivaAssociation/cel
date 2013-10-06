@@ -71,7 +71,7 @@ DESTDIR=%{buildroot} jam -d2 install
 %dir %{_libdir}/%{name}-%{major}
 %{_libdir}/%{name}-%{major}/*.so
 %{_libdir}/%{name}-%{major}/*.csplugin
-%{python_sitearch}/blcelc.pth
+%{py_platsitedir}/blcelc.pth
 
 %files devel
 %{_bindir}/%{name}-config
