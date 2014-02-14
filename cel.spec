@@ -1,15 +1,14 @@
-%define	major	1.4
+%define major 2.0
+%define libname %mklibname %{name} %{major}
 
 Summary:	Crystal Entity Layer
 Name:		cel
-Version:	%{major}.1
-Release:	2
+Version:	%{major}
+Release:	1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.crystalspace3d.org/
 Source0:	http://www.crystalspace3d.org/downloads/release/%{name}-src-%{version}.tar.bz2
-Patch0:		cel-1.4.1-fix-str-fmt.patch
-BuildRequires:	crystalspace-bindings-python
 BuildRequires:	doxygen
 BuildRequires:	ftjam >= 2.5.3rc2-0.9
 BuildRequires:	icoutils
@@ -21,7 +20,6 @@ BuildRequires:	texinfo
 BuildRequires:	crystalspace-devel >= %{major}
 BuildRequires:	pkgconfig(cppunit)
 BuildRequires:	pkgconfig(librsvg-2.0)
-BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(zlib)
 
 %description
@@ -36,20 +34,32 @@ CEL can optionally be used together with Python or other scripting languages.
 %{_datadir}/%{name}-%{major}
 %dir %{_sysconfdir}/%{name}-%{major}
 %config(noreplace) %{_sysconfdir}/%{name}-%{major}/*.cfg
-%{_libdir}/libceltool-%{major}.so
 %dir %{_libdir}/%{name}-%{major}
 %{_libdir}/%{name}-%{major}/*.so
 %{_libdir}/%{name}-%{major}/*.csplugin
-%{python_sitearch}/blcelc.pth
 
 #----------------------------------------------------------------------------
 
-%package	devel
-Summary:	Development headers and libraries for %{name}
-Group:		Development/C
+%package -n %{libname}
+Summary:	Shared libraries for %{name}
+Group:		System/Libraries
 Requires:	%{name} = %{EVRD}
 
-%description	devel
+%description -n %{libname}
+Shared libraries for %{name}.
+
+%files -n %{libname}
+%{_libdir}/libcelstartcore-%{major}.so
+%{_libdir}/libceltool-%{major}.so
+
+#----------------------------------------------------------------------------
+
+%package devel
+Summary:	Development headers and libraries for %{name}
+Group:		Development/C
+Requires:	%{libname} = %{EVRD}
+
+%description devel
 Development headers and libraries for %{name}.
 
 %files devel
@@ -74,13 +84,13 @@ Documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch0 -p1 -b .str_fmt~
 
 %build
 CXXFLAGS="%{optflags} -fpermissive" \
 %configure2_5x \
 	--disable-separate-debug-info \
-	--disable-meta-info-embedding
+	--disable-meta-info-embedding \
+	--without-python
 
 jam -d2 %{_smp_mflags}
 
@@ -88,5 +98,6 @@ jam -d2 %{_smp_mflags}
 DESTDIR=%{buildroot} jam -d2 install
 
 # Fix unstripped-binary-or-object
+chmod 0755 %{buildroot}%{_libdir}/libcelstartcore-%{major}.so
 chmod 0755 %{buildroot}%{_libdir}/libceltool-%{major}.so
 
