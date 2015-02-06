@@ -4,7 +4,7 @@
 Summary:	Crystal Entity Layer
 Name:		cel
 Version:	%{major}
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://www.crystalspace3d.org/
