@@ -9,6 +9,11 @@ License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://www.crystalspace3d.org/
 Source0:	http://www.crystalspace3d.org/downloads/release/%{name}-src-%{version}.tar.bz2
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	doxygen
 BuildRequires:	ftjam >= 2.5.3rc2-0.9
 BuildRequires:	icoutils
